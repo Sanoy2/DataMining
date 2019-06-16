@@ -1,22 +1,25 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
+
 
 import MLP
+import LR
+import DTC
+import SVM
+import Bayes
 
-filepath = "spam.dat"
+import data_reader
+
 
 def main():
-    print("Hello")
-    print(filepath)
-    file_content = pd.read_csv(filepath) # odzywam sie po naglowkach
-    X_train, X_test, y_train, y_test = train_test_split(
-    file_content.drop(labels=["target"], axis = 1), 
-    file_content["target"], 
-    test_size=0.2, 
-    random_state=42)
-
-    MLP.mlp(X_train,y_train, X_test, y_test)
+    filepath = "spam.dat"
+    x,X_test,y,Y_test = data_reader.get_data(filepath)
+    
+    # confusion = MLP.run(x,y, X_test, Y_test)
+    # confusion = LR.run(x,y, X_test, Y_test) # nie dziala
+    # confusion = DTC.run(x,y, X_test, Y_test)
+    # confusion = SVM.run(x,y, X_test, Y_test)
+    confusion = Bayes.run(x,y, X_test, Y_test, True)
 
 
 if __name__ == "__main__":
