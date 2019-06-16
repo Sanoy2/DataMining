@@ -9,7 +9,6 @@ def get_data(filepath, my_test_size=0.2):
                 to_replace=["yes", "no"], 
                 value=["spam", "not_spam"], 
                 inplace=True) 
-    print(file_content["target"])
     x_train, x_test, y_train, y_test = train_test_split(
     file_content.drop(labels=["target"], axis = 1), 
     file_content["target"], 
