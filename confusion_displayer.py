@@ -8,13 +8,12 @@ def display(confusion, labels, name=""):
     cm = confusion
     print(cm)
 
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    cax = ax.matshow(cm)
-    plt.title("Confusion matrix of the {0} classifier".format(name))
-    fig.colorbar(cax)
-    ax.set_xticklabels([''] + labels)
-    ax.set_yticklabels([''] + labels)
-    plt.xlabel('Predicted')
-    plt.ylabel('True')
+    ax= plt.subplot()
+    sns.heatmap(cm, annot=True, ax = ax, fmt='g'); #annot=True to annotate cells
+
+    # labels, title and ticks
+    ax.set_xlabel('Predicted labels')
+    ax.set_ylabel('True labels')
+    ax.set_title('Confusion Matrix')
+    ax.xaxis.set_ticklabels(labels); ax.yaxis.set_ticklabels(labels)
     plt.show()

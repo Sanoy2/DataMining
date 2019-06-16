@@ -8,7 +8,7 @@ def run(x, y, x_test, y_test, display=False):
 
     bayes.fit(x,y)
     y_pred = bayes.predict(x_test)
-    labels = ['yes', 'no']
+    labels = y.unique()
     confusion = confusion_matrix(y_test, y_pred, labels)
     # print(confusion)
     if display:
