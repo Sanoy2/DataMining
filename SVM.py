@@ -6,7 +6,6 @@ import confusion_displayer as cd
 def run(x, y, x_test, y_test, display=False, g="auto"):
     print("SVM")
     svm = _svm.SVC(gamma=g) # g = auto / scale
-
     svm.fit(x,y)
     y_pred = svm.predict(x_test)
     labels = y.unique()
