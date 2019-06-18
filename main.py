@@ -8,8 +8,6 @@ import SVM
 import Bayes
 import KNN
 
-import od_Pawla
-
 import data_reader
 
 
